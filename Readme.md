@@ -1,5 +1,6 @@
 # Command Mobile Penetration Testing Cheatsheet
-For this time is about Android :) IOS soon :)
+The things what you should know about android :) </br>
+For iOS application please check [iOS Pentest Cheatsheet](https://github.com/mirfansulaiman/Command-Mobile-Penetration-Testing-Cheatsheet/blob/master/ios-cheatsheet.md).</br>
 
 ## ADB Cheatsheet
 Download adb http://adbdriver.com/downloads/ or you can using adb as default from Android Studio.
@@ -90,6 +91,17 @@ $ java -jar FridaAndroidTracer.jar
 ### Frida Trick
 Bypass Root Detection:
 Bypass anti-root detection in android application try to using different data type to break the logic flaws.
+
+## Objection 
+Install from https://github.com/sensepost/objection </br>
+`pip3 install objection`</br></br>
+Usage:</br>
+Default Running Objection </br>
+`objection --gadget "com.application.id" explore`</br></br>
+Running Objection with command </br>
+`objection --gadget "com.application.id" explore --startup-command "ios jailbreak disable"`</br></br>
+Running Objection with script </br>
+`objection --gadget "com.application.id" explore --startup-script antiroot.js`</br>
 
 ## AndBug - For Enumerate Class And Method On Application
 Download https://github.com/swdunlop/AndBug </br>
@@ -223,6 +235,14 @@ Usage to scan Java source code files:
 $ qark --java path/to/parent/java/folder
 $ qark --java path/to/specific/java/file.java
 ```
+# SCREEN MIRRORING ANDROID DEVICE TO LAPTOP OR COMPUTER
+I believe you want to mirroring android screen to your laptop or computer, you can buy a software to do that or you can use this tool [SCRCPY](https://github.com/Genymobile/scrcpy) for free :D 
+## Install SCRCPY
+Mac : `brew install scrcpy`
+
+## Usefull command
+Run with window borderless : 
+`scrcpy -t --window-title 'My Research' --always-on-top`
 
 ## For Lazy People :v
 
