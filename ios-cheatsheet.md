@@ -11,3 +11,17 @@ Or you can download manualy on [Apple Website](https://developer.apple.com/downl
 
 Regist your apple ID as [Apple Developer Account](http://developer.apple.com/account). You dont need to pay as Apple Developer Program on this section just register your account into developer, because we just need to get Certificate for signing ipa file on XCode or other tools.
 
+## SSH Over USB (iPROXY)
+http://iphonedevwiki.net/index.php/SSH_Over_USB
+
+## Download .ipa file from app store or iPhone/iPad device
+
+### Need Jailbroken 
+#### Clutch
+[Clutch](https://github.com/KJCracks/Clutch)
+
+#### Frida Script
+[Frida-ios-dump](https://github.com/AloneMonkey/frida-ios-dump)
+command:
+`$ iproxy 2222 22`
+`$ ./dump.py BundleID`
