@@ -38,6 +38,12 @@ Both commands can be terminated using ctrl-D.
 
 # Dump Memory
 $ adb shell dumpsys meminfo com.package.name
+
+# Disable verification adb
+$ adb shell settings put global verifier_verify_adb_installs 0
+
+# Disable verification package
+$ adb shell settings put global package_verifier_enable 0
 ```
 
 ## Frida Cheatsheet
@@ -104,7 +110,10 @@ Default Running Objection </br>
 Running Objection with command </br>
 `objection --gadget "com.application.id" explore --startup-command "ios jailbreak disable"`</br></br>
 Running Objection with script </br>
-`objection --gadget "com.application.id" explore --startup-script antiroot.js`</br>
+`objection --gadget "com.application.id" explore --startup-script antiroot.js`</br></br>
+Inject Frida Gadget into APK with Objection</br>
+`objection patchapk --source apkname.apk`</br>
+After run application, the application will be paused and show the white screen at this moment you should run `objection explore` to resume the application.
 
 ## AndBug - For Enumerate Class And Method On Application
 Download https://github.com/swdunlop/AndBug </br>
@@ -246,6 +255,28 @@ Mac : `brew install scrcpy`
 ## Usefull command
 Run with window borderless : 
 `scrcpy -t --window-title 'My Research' --always-on-top`
+
+# Repackage / Modify APK
+
+Step to repackaging apk.
+
+1. Download original apk
+2. Extrack apk with apktool
+
+    `apktool d vantagepoint.apk -o vantagepoint`
+3. Modify the apk 
+4. Repackage apk with apktool
+
+    `apktool b vantagepoint -o vantagepoint_bank_1.apk`
+5. Align and Signing the APK with uber-apk-signer.
+    - To create the certificate I used this tool [APK Signer Tool v2](https://shatter-box.com/download/apk-signer-tool-v2/), the tool has a GUI and these tools is capable to do align and singing the apk also.
+    - Download : [Uber-Apk-Signer](https://github.com/patrickfav/uber-apk-signer)
+    
+    `java -jar uber-apk-signer-1.1.0.jar -a vantagepoint_bank.apk --ks vantagepoint.jks --ksAlias vantagepoint-pass --ksKeyPass 1234567 --ksPass 1234567 -o vantagepoint_bank_release`
+    
+6. Cek signed APK to verify the apk was sign with our certificate(optional)
+
+    `keytool -list -printcert -jarfile "vantagepoint_bank-aligned-signed.apk"`
 
 ## For Lazy People :v
 
